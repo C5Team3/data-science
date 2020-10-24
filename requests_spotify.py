@@ -7,14 +7,15 @@ import base64
 
 import requests
 
-# Data of Developer in App-Spotify
-client_id = 'bad84b6413fc444d82539ec1aad0c63c'
-client_secret = '843ea45beb0045ebbe8360a8cd2aab1f'
+from config import get_spotify_credentials
 
 
 # Function that create a valid token to connect to API Spotify
-def _get_token(client_id=client_id, client_secret=client_secret):
+def _get_token(credentials=get_spotify_credentials()):
     """Return a token valid by 1 hour"""
+
+    client_id = credentials['client_id']
+    client_secret = credentials['client_secret']
 
     encoded = base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8'))
 
