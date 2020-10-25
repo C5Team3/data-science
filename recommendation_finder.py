@@ -6,10 +6,10 @@
 from requests_spotify import request_spotify
 
 
-def get_recommendation(artist_id_list, tracks_id_list):
+def get_recommendation(seeds):
     """Request to API to get a Recommendation based on the seeds"""
-    artists_seeds = _get_seeds_artists(artist_id_list)
-    tracks_seeds = _get_seeds_artists(tracks_id_list)
+    artists_seeds = ','.join(seeds['artists'])
+    tracks_seeds = ','.join(seeds['tracks'])
 
     MARKET = 'US'
     LIMIT = '20'
@@ -21,16 +21,6 @@ def get_recommendation(artist_id_list, tracks_id_list):
     recommendation = request_spotify(uri)
 
     return recommendation.json()['tracks']
-
-
-def _get_seeds_tracks(tracks_id_list):
-    seeds = ','.join(tracks_id_list)
-    return seeds
-
-
-def _get_seeds_artists(artist_id_list):
-    seeds = ','.join(artist_id_list)
-    return seeds
 
 
 
