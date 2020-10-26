@@ -9,14 +9,20 @@ from datetime import datetime
 from requests_spotify import request_spotify
 
 
-def get_playback_history(playback):
+def get_playback_history(uid, playback):
     """Returns a playback history for a user from a playlist"""
     playback_history = []
 
     for i in range(10000):
-        register = random.choice(playback).copy()
+        register = {}
+
         date = get_random_date()
+        track = random.choice(playback).copy()
+
+        register['user_id'] = uid
         register['date'] = date
+        register['track'] = track
+
         playback_history.append(register)
 
     return playback_history
@@ -35,7 +41,7 @@ def get_play_back(id_playlist):
 
         for i in range(size_playlist):
             pb = {}
-            user_id = get_user_id()
+
             track_title = pl['items'][i]['track']['name']
             track_id = pl['items'][i]['track']['id']
             artist_name = pl['items'][i]['track']['artists'][0]['name']
@@ -44,7 +50,7 @@ def get_play_back(id_playlist):
             album_id = pl['items'][i]['track']['album']['id']
 
             pb['date'] = None
-            pb['user_id'] = user_id
+
             pb['track_title'] = track_title
             pb['track_id'] = track_id
             pb['artist_name'] = artist_name
