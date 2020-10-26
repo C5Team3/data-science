@@ -1,5 +1,7 @@
 import pandas as pd
 
+from datetime import datetime
+
 from connection import connection_database
 from playlist_builder import get_playlist
 from recommendation_finder import get_recommendation
@@ -47,8 +49,15 @@ def get_seeds_to_recommendation(user_id):
 
 
 def create_playlist_user(uid):
+
+    playlist = {}
+    playlist['user_id'] = uid
+    playlist['date'] = datetime.now()
+
     seeds = get_seeds_to_recommendation(uid)
     recommendation = get_recommendation(seeds)
-    playlist = get_playlist(recommendation)
+    tracks_playlist = get_playlist(recommendation)
+
+    playlist['tracks'] = tracks_playlist
 
     return playlist

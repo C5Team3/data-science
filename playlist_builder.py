@@ -1,55 +1,32 @@
 # This script create a play-list based in a Spotify-recommendation
-import pandas as pd
 
 def get_playlist(recommendation):
     """Returns a playlist"""
-    playlist = {}
-
-    tracks_id = []
-    tracks_titles = []
-    albums_id = []
-    albums_name = []
-    imgs_url = []
-    years = []
-    artists_id = []
-    artists_name = []
-    tracks_preview_url = []
+    playlist = []
 
     for track_info in recommendation:
+        track = {}
 
-        _track_id = track_info['id']
-        _title = track_info['name']
-        _album_id = track_info['album']['id']
-        _album_name = track_info['album']['name']
-        _img_url = track_info['album']['images'][2]['url']
-        _year = track_info['album']['release_date']
-        _artist_id = track_info['artists'][0]['id']
-        _artist_name = track_info['artists'][0]['name']
-        _url = track_info['preview_url']
+        track_id = track_info['id']
+        title = track_info['name']
+        album_id = track_info['album']['id']
+        album_name = track_info['album']['name']
+        img_url = track_info['album']['images'][2]['url']
+        year = track_info['album']['release_date']
+        artist_id = track_info['artists'][0]['id']
+        artist_name = track_info['artists'][0]['name']
+        url = track_info['preview_url']
 
+        track['track_id'] = track_id
+        track['track_title'] = title
+        track['album_id'] = album_id
+        track['album_name'] = album_name
+        track['img_url'] = img_url
+        track['year'] = year
+        track['artist_id'] = artist_id
+        track['artist_name'] = artist_name
+        track['preview_url'] = url
 
-        tracks_id.append(_track_id)
-        tracks_titles.append(_title)
-        albums_id.append(_album_id)
-        albums_name.append(_album_name)
-        imgs_url.append(_img_url)
-        years.append(_year)
-        artists_id.append(_artist_id)
-        artists_name.append(_artist_name)
-        tracks_preview_url.append(_url)
+        playlist.append(track)
 
-    playlist['id'] = tracks_id
-    playlist['title'] = tracks_titles
-    playlist['album_id'] = albums_id
-    playlist['album_name'] = albums_name
-    playlist['img_url'] = imgs_url
-    playlist['year'] = years
-    playlist['artist_id'] = artists_id
-    playlist['artist_name'] = artists_name
-    playlist['preview_url'] = tracks_preview_url
-
-
-    return pd.DataFrame(playlist)
-
-
-
+    return playlist
