@@ -28,7 +28,7 @@ def get_playback_history(uid, playback):
     return playback_history
 
 
-def get_play_back(id_playlist):
+def get_playback(id_playlist):
     """Return an arrangement of songs from a Playlist-ID"""
     url = "https://api.spotify.com/v1/playlists/{}/tracks?market=CO".format(id_playlist)
     playlist = request_spotify(url)
@@ -49,7 +49,7 @@ def get_play_back(id_playlist):
             album_name = pl['items'][i]['track']['album']['name']
             album_id = pl['items'][i]['track']['album']['id']
 
-            pb['date'] = None
+            #pb['date'] = None
 
             pb['track_title'] = track_title
             pb['track_id'] = track_id
