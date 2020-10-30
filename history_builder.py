@@ -73,8 +73,3 @@ def get_random_date():
 
     return random_date
 
-
-def get_user_id():
-    """"""
-    user_id = 'jose-melendez@platzi.com'
-    return user_id
