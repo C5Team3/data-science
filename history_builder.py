@@ -7,6 +7,7 @@ import random
 from datetime import datetime
 
 from requests_spotify import request_spotify
+from playlist_builder import get_artist_info
 
 
 def get_playback_history(uid, playback):
@@ -48,6 +49,7 @@ def get_playback(id_playlist):
             artist_id = pl['items'][i]['track']['artists'][0]['id']
             album_name = pl['items'][i]['track']['album']['name']
             album_id = pl['items'][i]['track']['album']['id']
+            genre = get_artist_info(artist_id)['genre'].pop()
 
             #pb['date'] = None
 
@@ -57,6 +59,7 @@ def get_playback(id_playlist):
             pb['artist_id'] = artist_id
             pb['album_name'] = album_name
             pb['album_id'] = album_id
+            pb['genre'] = genre
 
             playback.append(pb)
     else:

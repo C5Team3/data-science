@@ -75,6 +75,7 @@ def _get_df_history_user(user_history):
     artist_ids = []
     album_names = []
     album_ids = []
+    genres = []
 
     for track in tracks:
         track_titles.append(track['track_title'])
@@ -83,6 +84,7 @@ def _get_df_history_user(user_history):
         artist_ids.append(track['artist_id'])
         album_names.append(track['album_name'])
         album_ids.append(track['album_id'])
+        genres.append(track['genre'])
 
     history['date'] = dates
     history['track_title'] = track_titles
@@ -91,5 +93,6 @@ def _get_df_history_user(user_history):
     history['artist_id'] = artist_ids
     history['album_name'] = album_names
     history['album_id'] = album_ids
+    history['genre'] = genres
 
     return pd.DataFrame(history)
