@@ -2,15 +2,18 @@
 # The DB is a MongoDB
 
 from connection import connection_database
-from data_builder import create_playlist_user
+from data_builder import create_playlist_user, create_playlist_general
 from history_builder import get_playback, get_playback_history
 
 
-def save_new_playlist(uid):
+def save_new_playlist(uid=None):
     """Gets and saves a New Playlist to a specific user"""
 
     # Creates a new playlist
-    playlist = create_playlist_user(uid)
+    if uid:
+        playlist = create_playlist_user(uid)
+    else:
+        playlist = create_playlist_general()
 
     # Connects and write into DataBase
     db = connection_database()
