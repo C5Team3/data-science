@@ -36,3 +36,14 @@ def save_sample_playback_history(uid, id_playlist):
     collection.insert_many(history_user)
 
     print("A Sample of Playback-History was added to DataBase")
+
+
+def save_multiple_user_histories(uid_list, id_playlist):
+    base_playlist = get_playback(id_playlist)
+    for uid in uid_list:
+        history_user = get_playback_history(uid, base_playlist)
+        # Connects and write into DataBase
+        db = connection_database()
+        collection = db['playback_history']
+        collection.insert_many(history_user)
+        print("A Sample of Playback-History was added to DataBase")
