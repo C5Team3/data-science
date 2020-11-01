@@ -28,9 +28,10 @@ def _get_token(credentials=get_spotify_credentials()):
         print('Error en la request.', r.json())
         return None
 
-    #print('Token válido por {} segundos.'.format(r.json()['expires_in']))
+    # print('Token válido por {} segundos.'.format(r.json()['expires_in']))
 
     return r.json()['access_token']
+
 
 def request_spotify(uri):
     """Made a request to Spotify-API"""
@@ -40,4 +41,3 @@ def request_spotify(uri):
     request = requests.get(uri, headers=header)
 
     return request
-

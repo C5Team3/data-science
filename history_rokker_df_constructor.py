@@ -9,6 +9,7 @@ from connection import connection_database
 
 
 def get_history_from_db():
+    """Returns all the raw history of the application"""
     db = connection_database()
     history = db['playback_history']
     cursor = history.find({})
@@ -18,7 +19,7 @@ def get_history_from_db():
 
 
 def _get_df_rokker_history(rokker_history):
-    """Process the user playback history and returns a DataFrame"""
+    """PProcess raw history and return clean dataframe"""
     dates = list(rokker_history['date'])
     users = list(rokker_history['user_id'])
     ages = list(rokker_history['age'])
@@ -63,6 +64,7 @@ def _get_df_rokker_history(rokker_history):
 
 
 def main():
+    """Get the raw history of the app and save it as a csv file"""
     print("Obtain data from Database")
     df = get_history_from_db()
 

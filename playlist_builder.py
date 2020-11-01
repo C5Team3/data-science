@@ -4,7 +4,7 @@ from requests_spotify import request_spotify
 
 
 def get_playlist(recommendation):
-    """Returns a playlist"""
+    """Returns a playlist based into recommendation-array of Spotify API"""
     playlist = []
 
     for track_info in recommendation:
@@ -42,6 +42,7 @@ def get_playlist(recommendation):
 
 
 def get_artist_info(artist_id):
+    """Returns an array with Artist Information"""
     url = 'https://api.spotify.com/v1/artists/{}'.format(artist_id)
     artist = request_spotify(url)
 
@@ -57,6 +58,6 @@ def get_artist_info(artist_id):
         artist_info['artist_img'] = artist_img
 
     else:
-        print('Status Code Error {}'.format(playlist.status_code))
+        print('Status Code Error {}'.format(artist.status_code))
 
     return artist_info

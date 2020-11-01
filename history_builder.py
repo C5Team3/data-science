@@ -7,8 +7,8 @@ import random
 from datetime import datetime
 
 from connection import connection_database
-from requests_spotify import request_spotify
 from playlist_builder import get_artist_info
+from requests_spotify import request_spotify
 
 
 def get_playback_history(uid, playback):
@@ -62,7 +62,7 @@ def get_playback(id_playlist):
                 genre = get_artist_info(artist_id)['genre'].pop()
             except IndexError:
                 genre = None
-            #pb['date'] = None
+            # pb['date'] = None
 
             pb['track_title'] = track_title
             pb['track_id'] = track_id
@@ -89,8 +89,9 @@ def get_random_date():
 
 
 def get_info_user(uid):
+    """Returns an array with user information"""
     db = connection_database()
     collection = db['users_test']
-    cursor = collection.find({'email':uid})
+    cursor = collection.find({'email': uid})
     info_user = list(cursor)[0]
     return info_user

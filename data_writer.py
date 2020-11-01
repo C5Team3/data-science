@@ -39,6 +39,7 @@ def save_sample_playback_history(uid, id_playlist):
 
 
 def save_multiple_user_histories(uid_list, id_playlist):
+    """Create demo play histories for a user list from a playlist"""
     base_playlist = get_playback(id_playlist)
     for uid in uid_list:
         history_user = get_playback_history(uid, base_playlist)

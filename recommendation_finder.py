@@ -16,11 +16,8 @@ def get_recommendation(seeds):
 
     URL_BASE = 'https://api.spotify.com/v1/recommendations?limit={}&market={}&seed_artists={}&seed_tracks={}'
 
-    uri = URL_BASE.format(LIMIT,MARKET, artists_seeds, tracks_seeds)
+    uri = URL_BASE.format(LIMIT, MARKET, artists_seeds, tracks_seeds)
 
     recommendation = request_spotify(uri)
 
     return recommendation.json()['tracks']
-
-
-

@@ -1,3 +1,8 @@
+# This script connects to the database and looks at the playback history.
+# Then process the history and get a seed arrangement with
+# the most popular songs and artists.
+# This arrangement will be used later to get a recommendation from the spotify API.
+
 import pandas as pd
 
 from connection import connection_database
