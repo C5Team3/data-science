@@ -23,6 +23,11 @@ With the an user playback history or all the playback-history of the application
 1. Playback-history for a specific user:  `history_downloader.py <user-sample@mail.com>`
 2. Playback-history for all users: `history_downloader.py`
 
+You can see the dashboards with Stats about user history playback and app-history:
+
+1. Stats for a user: https://datastudio.google.com/reporting/fd663400-4bc9-4269-b06e-6031b26447a7/page/I1hmB
+2. Stats for admin: https://datastudio.google.com/u/0/reporting/20f17f91-4115-40ff-b6e2-becd773dbbb4/page/2cnmB
+
 ## Virtual Enviroment and Libraries
 
 This project runs about a virtual environment with these libraries:
