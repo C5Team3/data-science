@@ -87,3 +87,11 @@ def _get_df_history_user(user_history):
     history['genre'] = genres
 
     return pd.DataFrame(history)
+
+
+if __name__ == '__main__':
+    # Test Getting Seeds
+    uid = "abrant0@elegantthemes.com"
+    seeds = get_seeds_to_recommendation(uid)
+
+    print(seeds)

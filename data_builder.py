@@ -14,6 +14,7 @@ def create_playlist_user(uid):
     """Build a playlist for a user"""
     playlist = {}
     playlist['type'] = 'user-playlist'
+    playlist['title'] = None
     playlist['user_id'] = uid
     playlist['date'] = datetime.now()
 
@@ -23,6 +24,11 @@ def create_playlist_user(uid):
 
     playlist['tracks'] = tracks_playlist
 
+    # Update Title-Playlist
+    artist = tracks_playlist[0]['artist_name']
+    track = tracks_playlist[0]['track_title']
+    playlist['title'] = "Playlist: {} - {}".format(artist, track)
+
     return playlist
 
 
@@ -30,6 +36,7 @@ def create_playlist_general():
     """Build a playlist to all users"""
     playlist = {}
     playlist['type'] = 'general-playlist'
+    playlist['title'] = None
     playlist['date'] = datetime.now()
 
     seeds = get_seeds_to_recommendation()
@@ -37,5 +44,10 @@ def create_playlist_general():
     tracks_playlist = get_playlist(recommendation)
 
     playlist['tracks'] = tracks_playlist
+
+    # Update Title-Playlist
+    artist = tracks_playlist[0]['artist_name']
+    track = tracks_playlist[0]['track_title']
+    playlist['title'] = "Playlist: {} - {}".format(artist, track)
 
     return playlist
